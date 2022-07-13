@@ -13,6 +13,7 @@ func handler(ctx context.Context, request events.CloudWatchEvent) error {
 	if globalErr != nil {
 		return globalErr
 	}
+	fmt.Println(request)
 
 	return nil
 }
