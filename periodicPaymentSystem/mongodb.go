@@ -19,15 +19,11 @@ func InitMongoDB() error {
 	clientOptions := options.Client()
 	connUriDB := fmt.Sprintf("%s_%s", Env.Project, Env.Environment)
 	var connUri string
-	//mongodb_dev_medical_web_id
-	//mongodb_dev_medical_web_pw
-	//mongodb_dev_domain
 	connInfos, err := AwsGetParams([]string{
 		fmt.Sprintf("mongodb_%s_%s_id", Env.Environment, Env.Project),
 		fmt.Sprintf("mongodb_%s_%s_pw", Env.Environment, Env.Project),
 		fmt.Sprintf("mongodb_%s_domain", Env.Environment),
 	})
-	fmt.Println(connInfos)
 	if err != nil {
 		return err
 	}
@@ -39,6 +35,8 @@ func InitMongoDB() error {
 	if connUriID == "" || connUriPW == "" || connUriDomain == "" {
 		return fmt.Errorf("no available mongodb conn info - id:%s / pw:%s / domain:%s", connUriID, connUriPW, connUriDomain)
 	}
+	connUriDomain = fmt.Sprintf("localhost:%d", 27016)
+	additionalOpt = "&directConnection=true"
 	connUri = fmt.Sprintf("mongodb://%s:%s@%s/?authSource=admin&replicaSet=rs0&w=majority&readPreference=primary&retryWrites=true&ssl=false%s", connUriID, connUriPW, connUriDomain, additionalOpt)
 
 	clientOptions = clientOptions.ApplyURI(connUri)
