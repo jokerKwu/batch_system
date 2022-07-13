@@ -6,26 +6,33 @@ Description: >
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
   Function:
-    Timeout: 5
+    Architectures:
+      - x86_64
+    Timeout: 120
 
 Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: hello-world/
-      Handler: hello-world
+      CodeUri: periodic-payment-system/
+      Handler: periodic-payment-system
+      PackageType: Zip
+      MemorySize: 128
       Runtime: go1.x
       Architectures:
         - x86_64
       Events:
-        CatchAll:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+        CWSchedule:
+          Type: Schedule
           Properties:
-            Path: /hello
-            Method: GET
-      Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
+            Schedule: 'cron(0/5 * ? * * *)' # 매일 UTC 00:05
+      ReservedConcurrentExecutions: 1
+      Environment:
         Variables:
-          PARAM1: VALUE
+          PROJECT: 'medical_web'
+          ENV: 'dev'
+          REGION: 'ap-northeast-2'
+          CONFIG_DATE_ADJ: '-1'
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
