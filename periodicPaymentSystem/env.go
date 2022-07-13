@@ -13,7 +13,6 @@ type ProjectEnv struct {
 	Project     string
 	Environment string
 	Region      string
-	IsLocal     bool
 }
 
 var Env ProjectEnv
