@@ -30,7 +30,6 @@ Resources:
           PROJECT: 'medical_web'
           ENV: 'dev'
           REGION: 'ap-northeast-2'
-          CONFIG_DATE_ADJ: '-1'
 
 Outputs:
   PeriodicPaymentSystemFunction:

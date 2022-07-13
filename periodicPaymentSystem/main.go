@@ -14,12 +14,21 @@ func handler(ctx context.Context, request events.CloudWatchEvent) error {
 		return globalErr
 	}
 	fmt.Println(request)
-
+	fmt.Println(Env)
 	return nil
 }
 
 func main() {
 	fmt.Println("main hello")
+	if err := InitEnv(); err != nil {
+		globalErr = err
+	}
+	if err := InitAws(); err != nil {
+		globalErr = err
+	}
+	if err := InitMongoDB(); err != nil {
+		globalErr = err
+	}
 
 	lambda.Start(handler)
 }
