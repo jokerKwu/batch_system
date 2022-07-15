@@ -5,8 +5,7 @@ import (
 	"fmt"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/jokerKwu/batch_system/common/aws/ssm"
-	"github.com/jokerKwu/batch_system/common/db"
+	common "github.com/jokerKwu/batch_system"
 )
 
 var globalErr error
@@ -25,7 +24,7 @@ func main() {
 	if err := InitEnv(); err != nil {
 		globalErr = err
 	}
-	if err := ssm.InitAws(Env.Region); err != nil {
+	if err := common.InitAws(Env.Region); err != nil {
 		globalErr = err
 	}
 	if err := db.InitMognoDB(); err != nil {

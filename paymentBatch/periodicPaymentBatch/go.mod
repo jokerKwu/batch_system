@@ -1,6 +1,6 @@
 require (
 	github.com/aws/aws-lambda-go v1.32.1
-	github.com/jokerKwu/batch_system v0.0.0-20220715113649-6f776d6271e5
+	github.com/jokerKwu/batch_system v1.0.0-alpha.1
 )
 
 require (
