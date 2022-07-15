@@ -35,10 +35,8 @@ func InitMongoDB() error {
 	if connUriID == "" || connUriPW == "" || connUriDomain == "" {
 		return fmt.Errorf("no available mongodb conn info - id:%s / pw:%s / domain:%s", connUriID, connUriPW, connUriDomain)
 	}
-	connUriDomain = fmt.Sprintf("localhost:%d", 27016)
-	additionalOpt = "&directConnection=true"
 	connUri = fmt.Sprintf("mongodb://%s:%s@%s/?authSource=admin&replicaSet=rs0&w=majority&readPreference=primary&retryWrites=true&ssl=false%s", connUriID, connUriPW, connUriDomain, additionalOpt)
-
+	fmt.Println(connUri)
 	clientOptions = clientOptions.ApplyURI(connUri)
 	clientOptions.SetMaxPoolSize(1)
 	clientOptions.SetMinPoolSize(1)

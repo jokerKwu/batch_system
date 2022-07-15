@@ -14,6 +14,7 @@ func handler(ctx context.Context, request events.CloudWatchEvent) error {
 		return globalErr
 	}
 	fmt.Println("핸들러 탄다.")
+
 	return nil
 }
 
