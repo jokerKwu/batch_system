@@ -1,12 +1,12 @@
 package main
 
 import (
-	"batch_system/common/aws/ssm"
-	"batch_system/common/db"
 	"context"
 	"fmt"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/jokerKwu/batch_system/common/aws/ssm"
+	"github.com/jokerKwu/batch_system/common/db"
 )
 
 var globalErr error
