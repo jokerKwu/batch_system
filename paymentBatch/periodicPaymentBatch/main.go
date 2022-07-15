@@ -31,6 +31,5 @@ func main() {
 	if err := db.InitMognoDB(); err != nil {
 		globalErr = err
 	}
-
 	lambda.Start(handler)
 }
