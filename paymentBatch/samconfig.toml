@@ -1,0 +1,11 @@
+version = 0.1
+
+[apne2-dev.deploy]
+[apne2-dev.deploy.parameters]
+stack_name = "idea-workers-apne2-dev"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-nr2nl2wmo6k1"
+s3_prefix = "idea-workers-apne2-dev"
+region = "ap-northeast-2"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+image_repositories = []

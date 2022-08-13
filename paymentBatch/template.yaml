@@ -17,6 +17,12 @@ Resources:
       PackageType: Zip
       MemorySize: 128
       Runtime: go1.x
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-048ff7d86d1e33455 #idea_dev_private_int
+        SubnetIds:
+          - subnet-0f8b7b3df5e5dbfb6 #idea-private-b1
+          - subnet-0ed86c9cfd4120dab #idea-private-c1
       Architectures:
         - x86_64
       Events:
