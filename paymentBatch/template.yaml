@@ -29,8 +29,21 @@ Resources:
         CWSchedule:
           Type: Schedule
           Properties:
-            Schedule: 'cron(0/5 * ? * * *)' # 매일 UTC 00:05
+            Schedule: 'cron(15 10 * * ? *)' # 매일 UTC 00:05
       ReservedConcurrentExecutions: 1
+      Policies:
+        - Statement:
+            - Sid: SSMDescribeParametersPolicy
+              Effect: Allow
+              Action:
+                - ssm:DescribeParameters
+              Resource: '*'
+            - Sid: SSMGetParameterPolicy
+              Effect: Allow
+              Action:
+                - ssm:GetParameters
+                - ssm:GetParameter
+              Resource: '*'
       Environment:
         Variables:
           PROJECT: 'medical_web'

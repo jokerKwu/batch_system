@@ -1,6 +1,6 @@
 require (
 	github.com/aws/aws-lambda-go v1.32.1
-	github.com/jokerkwu/backend_common v0.0.8
+	github.com/jokerkwu/backend_common v0.0.9
 	go.mongodb.org/mongo-driver v1.10.0
 )
 

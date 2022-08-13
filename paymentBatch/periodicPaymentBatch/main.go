@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
+	common "github.com/jokerkwu/backend_common/batch_common"
 	"time"
 )
 
@@ -27,18 +28,15 @@ func handler(ctx context.Context, request events.CloudWatchEvent) error {
 }
 
 func main() {
-	fmt.Println("main hello")
-	/*
-		if err := common.InitEnv(); err != nil {
-			globalErr = err
-		}
-		if err := common.InitAws(common.Env.Region); err != nil {
-			globalErr = err
-		}
-		if err := InitMongoDB(); err != nil {
-			globalErr = err
-		}
-
-	*/
+	fmt.Println("main hello11")
+	if err := common.InitEnv(); err != nil {
+		globalErr = err
+	}
+	if err := common.InitAws(common.Env.Region); err != nil {
+		globalErr = err
+	}
+	if err := InitMongoDB(); err != nil {
+		globalErr = err
+	}
 	lambda.Start(handler)
 }
